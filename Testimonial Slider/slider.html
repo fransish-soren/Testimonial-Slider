@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tastemonials Slider</title>
+    <link rel="stylesheet" href="slider.css">
+</head>
+<body>
+    <section class="testimonials" id="testimonials">
+  <h2 class="section-title">What Our Customers Say</h2>
+
+  <div class="testimonial-container">
+    
+    <div class="testimonial-slide active">
+      <p class="testimonial-text">
+        "Amazing food and great service! I loved the ambiance. Highly recommended!"
+      </p>
+      <div class="testimonial-user">
+        <img src="assets/user1.jpg" alt="" width="300">
+        <h3>John Doe</h3>
+      </div>
+    </div>
+
+    <div class="testimonial-slide">
+      <p class="testimonial-text">
+        "Best restaurant experience ever! Delicious dishes and friendly staff."
+      </p>
+      <div class="testimonial-user">
+        <img src="assets/user2.jpg" alt="" width="300">
+        <h3>Sarah Khan</h3>
+      </div>
+    </div>
+
+    <div class="testimonial-slide">
+      <p class="testimonial-text">
+        "The desserts were incredible! I will definitely come again."
+      </p>
+      <div class="testimonial-user">
+        <img src="assets/user3.jpg" alt="" width="300">
+        <h3>Michael Lee</h3>
+      </div>
+    </div>
+
+    <!-- Buttons -->
+    <div class="slider-buttons">
+      <button id="prev">&#10094;</button>
+      <button id="next">&#10095;</button>
+    </div>
+
+  </div>
+</section>
+<script>
+    //   TESTEMONIAL SLIDER 
+
+  const slides = document.querySelectorAll(".testimonial-slide");
+  const nextBtn = document.getElementById("next");
+  const prevBtn = document.getElementById("prev");
+
+  let index = 0;
+
+  function showSlide(i) {
+    slides.forEach(slide => slide.classList.remove("active"));
+    slides[i].classList.add("active");
+  }
+
+  nextBtn.addEventListener("click", () => {
+    index++;
+    if (index >= slides.length) index = 0;
+    showSlide(index);
+  });
+
+  prevBtn.addEventListener("click", () => {
+    index--;
+    if (index < 0) index = slides.length - 1;
+    showSlide(index);
+  });
+
+  // Auto slide
+  setInterval(() => {
+    index++;
+    if (index >= slides.length) index = 0;
+    showSlide(index);
+  }, 4000);
+
+</script>
+</body>
+</html>
